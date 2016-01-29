@@ -45,4 +45,8 @@ group :development, :test do
   gem 'annotate'
 
   gem 'pry-rails'
+
+  gem 'faker'
+
+  gem 'populator'
 end

@@ -1,0 +1,6 @@
+<h1><%= @track.name %></h1>
+  <p><%= @track.lyrics %></p>
+<%= button_to "Edit Track", edit_track_url(@track) %>
+<%= button_to "Destroy Track", action: "delete", method: "delete" %>
+<%= button_to "Tracks Belonging to Album", album_url(@track.album) %>
+<%= button_to "Create New Track", new_track_url %>

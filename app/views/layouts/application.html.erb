@@ -9,6 +9,8 @@
 <body>
 
 <%= yield %>
-
+<% if current_user %>
+  <%= button_to "sign-out", session_url(current_user), method: "delete" %>
+<% end %>
 </body>
 </html>

@@ -1,0 +1,22 @@
+<% @album ||= Album.new if source: :new %>
+<% @album = Album.find_by_id(params[:id]) if source: :edit %>
+
+<form action="<%= action %>" method="<%= method %>">
+  <label>Name:</label>
+  <input type="text" name="album[name]">
+  <br>
+  <select name=album[band_id]>
+    <% Band.all.each do |band| %>
+      <option value=band.id <%= selected if @album.band_id == band.id%>>
+        <%= band.name %>
+      </option>
+    <% end %>
+  </select>
+  <br>
+  <label>Live</label>
+  <input type="radio" name="album[live_or_studio]" value="live"
+    <%= selected if @album.live_or_studio == "live" %>>
+  <label>Studio</label>
+  <input type="radio" name="album[live_or_studio]" value="studio"
+    <% selected if @album.live_or_studio == "studio" %>>
+</form>

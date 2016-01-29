@@ -1,0 +1,9 @@
+<h1><%= @album.name %></h1>
+<% @album.tracks.each do |track|%>
+  <a href="<%= track_url(track) %>"><%= track.name %></a>
+  <br>
+<% end %>
+<%= button_to "Edit Album", edit_album_url(@album) %>
+<%= button_to "Destroy Album", action: "delete", method: "delete" %>
+<%= button_to "Albums Belonging to Band", band_url(@album.band) %>
+<%= button_to "Create New Track", new_track_url %>

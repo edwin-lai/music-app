@@ -1,0 +1,23 @@
+<% @track ||= Track.new if source: :new %>
+<% @track = Track.find_by_id(params[:id]) if source: :edit %>
+
+<form action="<%= action %>" method="<%= method %>">
+  <label>Name:</label>
+  <input type="text" name="track[name]">
+  <br>
+  <select name=track[album_id]>
+    <% Album.all.each do |album| %>
+      <option value=album.id <%= selected if @track.album_id == album.id%>>
+        <%= album.name %>
+      </option>
+    <% end %>
+  </select>
+  <br>
+  <label>Live</label>
+  <input type="radio" name="track[regular_or_bonus]" value="regular"
+    <%= selected if @track.regular_or_bonus == "regular" %>>
+  <label>Studio</label>
+  <input type="radio" name="track[regular_or_bonus]" value="bonus"
+    <% selected if @track.regular_or_bonus == "bonus" %>>
+  <input type="textarea" name="track[lyrics]">
+</form>

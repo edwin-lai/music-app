@@ -1,6 +1,11 @@
 <% @band = Band.find_by_id(params[:id]) %>
 <h1><%= @band.name %></h1>
+<ul>
+<% @band.albums.each do |album| %>
+  <li><a href="<%= album_url(album) %>"><%= album.name %></a></li>
+<% end %>
+</ul>
 <%= button_to "Edit Band", edit_band_url(@band) %>
-<%= button_to "Destroy Band", action: "delete", method: "delete" %>
+<%= button_to "Destroy Band", band_url(@band), method: "delete" %>
 <%= button_to "All Bands", bands_url %>
-<%= button_to "Create New Album", new_album_url %>
+<%= button_to "Create New Album", new_band_album_url(@band) %>
